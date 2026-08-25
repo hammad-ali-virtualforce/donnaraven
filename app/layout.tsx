@@ -4,7 +4,7 @@ import "./globals.css";
 
 import Header from "@/app/components/layout/Header/Header";
 import Footer from "@/app/components/layout/Footer/Footer";
-import PreFooterWrapper from "@/app/components/layout/prefooter/PreFooterWrapper";
+import PreFooterWrapper from "@/app/components/layout/Prefooter/PreFooterWrapper";
 import { getGlobalSiteData } from "@/app/lib/global";
 
 
