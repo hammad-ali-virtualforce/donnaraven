@@ -175,20 +175,20 @@ export type ReviewsSectionData = {
 
   reviews: ReviewItem[] | null;
 };
-
+export type StepIcon =
+  | "clipboard-check"
+  | "landmark"
+  | "house-search"
+  | "handshake"
+  | "clipboard-search"
+  | "key-round";
 export type StepItem = {
   stepNumber: string | null;
   title: string | null;
   description: string | null;
   link: string | null;
 
-  icon: {
-    node: {
-      id: string;
-      sourceUrl: string;
-      altText: string | null;
-    };
-  } | null;
+   icon: StepIcon | null;
 };
 
 export type StepsSectionData = {

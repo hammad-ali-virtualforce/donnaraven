@@ -43,7 +43,9 @@ export default function PreFooter({
             z-10
             
           "
-          style={{backgroundImage:`url(${topBackground.sourceUrl})`, backgroundRepeat:"no-repeat", backgroundSize:"cover"}}
+          style={{backgroundImage:topBackground
+      ? `url(${topBackground.sourceUrl})`
+      : "none", backgroundRepeat:"no-repeat", backgroundSize:"cover"}}
         >
           {/* MAIN BACKGROUND IMAGE */}
             {mainBackground && (

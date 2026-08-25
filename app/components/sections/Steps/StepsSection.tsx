@@ -238,7 +238,7 @@ export default function StepsSection({
             const Icon =
             step.icon
                 ? iconMap[
-                    step.icon as keyof typeof iconMap
+                    step.icon 
                 ]
                 : null;
 

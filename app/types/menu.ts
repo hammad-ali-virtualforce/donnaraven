@@ -7,7 +7,10 @@ export type MenuItem = {
   target: string | null;
   cssClasses: string[];
 };
-
+export type MenuItemTree =
+  MenuItem & {
+    children: MenuItemTree[];
+  };
 export type MenuResponse = {
   nodes: MenuItem[];
 };
