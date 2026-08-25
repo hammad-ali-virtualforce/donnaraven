@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 
-import PreFooter from "./PreFooter";
+import PreFooter from "@/app/components/layout/Prefooter/PreFooter";
 
 import type {
   PreFooterSettings,
