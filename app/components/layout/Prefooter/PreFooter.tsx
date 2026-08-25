@@ -17,7 +17,7 @@ export default function PreFooter({
     settings.backgroundImage1?.node;
 
   const topBackground =
-    settings.backgroundImage2?.node;
+    settings.backgroundImage2?.node || null;
 
   const logo =
     settings.logo?.node;
