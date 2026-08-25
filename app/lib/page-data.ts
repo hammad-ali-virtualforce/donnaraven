@@ -4,11 +4,11 @@ import {
 
 import {
   PAGE_QUERY,
-} from "@/app/lib/queries/page";
+} from "@/app/lib/queries/page-query";
 
 import type {
   PageResponse,
-} from "@/app/types/page";
+} from "@/app/types/page-builder";
 
 export async function getPage(
   uri: string

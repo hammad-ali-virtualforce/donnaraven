@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import type {
   SplitContentSectionData,
-} from "@/app/types/page";
+} from "@/app/types/page-builder";
 
 type SplitContentSectionProps = {
   section: SplitContentSectionData;

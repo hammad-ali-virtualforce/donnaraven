@@ -30,7 +30,7 @@ import HeroSideRail from "./HeroSideRail";
 
 import type {
   HeroSlide as HeroSlideType,
-} from "@/app/types/page";
+} from "@/app/types/page-builder";
 
 import type {
   ContactInformation,

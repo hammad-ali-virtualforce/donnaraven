@@ -5,7 +5,7 @@ import { demoListings } from "@/app/data/demoListings";
 
 import type {
   ListingsSectionData,
-} from "@/app/types/page";
+} from "@/app/types/page-builder";
 
 type ListingsSectionProps = {
   section: ListingsSectionData;

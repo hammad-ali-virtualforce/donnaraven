@@ -4,7 +4,7 @@ import Image from "next/image";
 
 import type {
   HeroSlide as HeroSlideType,
-} from "@/app/types/page";
+} from "@/app/types/page-builder";
 
 type HeroSlideProps = {
   slide: HeroSlideType;

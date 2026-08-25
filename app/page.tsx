@@ -2,7 +2,7 @@ import SectionRenderer from "@/app/components/sections/SectionRenderer";
 
 import {
   getPage,
-} from "@/app/lib/page";
+} from "@/app/lib/page-data";
 
 import {
   getGlobalSiteData,

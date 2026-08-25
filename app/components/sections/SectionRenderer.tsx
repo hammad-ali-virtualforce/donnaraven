@@ -8,31 +8,31 @@ import StepsSection from "@/app/components/sections/Steps/StepsSection";
 
 import type {
   StatsSectionData,
-} from "@/app/types/page";
+} from "@/app/types/page-builder";
 
 
 import type {
   SplitContentSectionData,
-} from "@/app/types/page";
+} from "@/app/types/page-builder";
 
 import type {
   ReviewsSectionData,
-} from "@/app/types/page";
+} from "@/app/types/page-builder";
 import type {
   ContactInformation,
   SocialLink,
 } from "@/app/types/global";
 import type {
   StepsSectionData,
-} from "@/app/types/page";
+} from "@/app/types/page-builder";
 import type {
   PageSection,
   HeroSliderSection,
   ListingsSectionData,
-} from "@/app/types/page";
+} from "@/app/types/page-builder";
 import type {
   ExpertiseSectionData,
-} from "@/app/types/page";
+} from "@/app/types/page-builder";
 
 type SectionRendererProps = {
   sections: PageSection[];

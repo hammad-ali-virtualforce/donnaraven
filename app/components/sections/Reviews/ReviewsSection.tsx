@@ -23,7 +23,7 @@ import "swiper/css/effect-fade";
 
 import type {
   ReviewsSectionData,
-} from "@/app/types/page";
+} from "@/app/types/page-builder";
 
 type ReviewsSectionProps = {
   section: ReviewsSectionData;

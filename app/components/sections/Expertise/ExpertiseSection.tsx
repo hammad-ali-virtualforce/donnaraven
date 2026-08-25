@@ -6,7 +6,7 @@ import { useState } from "react";
 
 import type {
   ExpertiseSectionData,
-} from "@/app/types/page";
+} from "@/app/types/page-builder";
 
 type ExpertiseSectionProps = {
   section: ExpertiseSectionData;

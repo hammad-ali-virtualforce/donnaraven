@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import type {
   StatsSectionData,
-} from "@/app/types/page";
+} from "@/app/types/page-builder";
 
 type StatsSectionProps = {
   section: StatsSectionData;
