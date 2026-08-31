@@ -3,6 +3,10 @@ import { notFound } from "next/navigation";
 import SectionRenderer from "@/app/components/sections/SectionRenderer";
 
 import {
+  getGlobalSiteData,
+} from "@/app/lib/global";
+
+import {
   getPage,
 } from "@/app/lib/page-data";
 
@@ -19,25 +23,41 @@ export default async function DynamicPage({
 
   const uri = `/${slug.join("/")}/`;
 
-  const data = await getPage(uri);
+  const [
+    pageData,
+    globalData,
+  ] = await Promise.all([
+    getPage(uri),
+    getGlobalSiteData(),
+  ]);
 
-
-  const page = data?.page;
+  const page =
+    pageData?.page;
 
   if (!page) {
     notFound();
   }
 
   const sections =
-    page.pageSections?.pageSections ?? [];
+    page.pageSections
+      ?.pageSections ?? [];
 
+  const contact =
+    globalData.siteSettings
+      .contactInformation
+      .contactInformation;
+
+  const socials =
+    globalData.siteSettings
+      .socialMedia
+      .socialLinks ?? [];
 
   return (
     <main>
       <SectionRenderer
         sections={sections}
-        contact={{}}
-        socials={[]}
+        contact={contact}
+        socials={socials}
       />
     </main>
   );

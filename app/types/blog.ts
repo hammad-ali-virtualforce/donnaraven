@@ -21,7 +21,8 @@ export type BlogPost = {
   title: string;
   slug: string;
   uri: string;
-
+  author: string;
+  content: string;
   date: string;
 
   excerpt: string | null;

@@ -119,7 +119,7 @@ export default function AssociatesSection({
             associate.image?.node ?? null;
 
           const href =
-            associate.buttonLink || "#";
+            associate.link || "#";
 
           const isExternal =
             href.startsWith("http://") ||
