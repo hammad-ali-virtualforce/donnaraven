@@ -32,6 +32,7 @@ type HeaderProps = {
   socials: SocialLink[];
 
   settings: HeaderSettings;
+  transparent?: boolean;
 };
 
 export default function Header({
@@ -41,13 +42,17 @@ export default function Header({
   contact,
   socials,
   settings,
+  transparent,
 }: HeaderProps) {
   const [isOpen, setIsOpen] =
     useState(false);
 
   const [scrolled, setScrolled] =
     useState(false);
-
+const isTransparent =
+  transparent ??
+  settings.transparentHeader ??
+  true;
   useEffect(() => {
     function handleScroll() {
       setScrolled(
@@ -82,24 +87,22 @@ export default function Header({
 
   const currentLogo =
     !scrolled &&
-    settings.transparentHeader
+    isTransparent
       ? lightLogo
       : normalLogo;
 
   const backgroundColor =
-    scrolled ||
-    !settings.transparentHeader
-      ? settings.headerBackgroundColor ||
-        "#F3F0E9"
-      : "transparent";
+  scrolled || !isTransparent
+    ? settings.headerBackgroundColor ||
+      "#0b2f53"
+    : "transparent";
 
   const textColor =
-    scrolled ||
-    !settings.transparentHeader
-      ? "#fff"
-      : settings.headerTextColor ||
-        "#FFFFFF";
-
+  scrolled || !isTransparent
+    ? "#fff"
+    : settings.headerTextColor ||
+      "#FFFFFF";
+console.log("settings", settings)
   return (
     <>
       <header

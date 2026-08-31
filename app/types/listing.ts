@@ -4,26 +4,29 @@ export type ListingStatus =
 
 export type Listing = {
   id: string;
+  slug: string;
 
   status: ListingStatus;
 
   address: string;
-
   city: string;
-
   state: string;
-
   zip: string;
 
   price: number;
 
-  bedrooms?: number;
-
-  bathrooms?: number;
-
-  sqft?: number;
+  bedrooms: number;
+  bathrooms: number;
+  sqft: number;
 
   image: string;
 
-  url?: string;
+  gallery?: string[];
+
+  description?: string;
+
+  propertyType?: string;
+  yearBuilt?: number;
+  lotSize?: string;
+  parking?: string;
 };

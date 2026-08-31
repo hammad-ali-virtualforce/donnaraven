@@ -8,7 +8,10 @@ export const PAGE_QUERY = `
       title
       slug
       uri
-
+      pageSettings {
+        transparentHeader
+        showPrefooter
+      }
       pageSections {
         pageSections {
           __typename
@@ -79,6 +82,7 @@ export const PAGE_QUERY = `
             description
             backgroundColor
             opacity
+            contentBackgroundColor
 
             backgroundImage {
               node {
@@ -97,12 +101,14 @@ export const PAGE_QUERY = `
               value
               suffix
               label
+              enableCounter
             }
           }
           ... on PageSectionsPageSectionsAreasOfExpertiseLayout {
             eyebrow
             heading
-
+            buttonText
+            buttonLink
             defaultImage {
               node {
                 id
@@ -126,9 +132,12 @@ export const PAGE_QUERY = `
             }
           }
           ... on PageSectionsPageSectionsReviewsSectionLayout {
+            __typename
             eyebrow
             heading
             description
+            displayStyle
+            reviewsPerPage
             buttonText
             buttonLink
 
@@ -141,9 +150,18 @@ export const PAGE_QUERY = `
             }
 
             reviews {
-              reviewerName
-              rating
-              review
+              nodes {
+                ... on Review {
+                  id
+                  title
+
+                  reviews {
+                    review
+                    rating
+                    featured
+                  }
+                }
+              }
             }
           }
           ... on PageSectionsPageSectionsStepsSectionLayout {
@@ -162,6 +180,95 @@ export const PAGE_QUERY = `
               link
               icon 
             }
+          }
+          ... on PageSectionsPageSectionsInnerHeroLayout {
+            eyebrow
+            heading
+            description
+            textColor
+            overlayOpacity
+
+            backgroundImage {
+              node {
+                id
+                sourceUrl
+                altText
+              }
+            }
+
+            portraitImage {
+              node {
+                id
+                sourceUrl
+                altText
+              }
+            }
+          }
+          ... on PageSectionsPageSectionsAssociatesSectionLayout {
+            __typename
+            eyebrow
+            heading
+            description
+            buttons {
+              buttonText
+              buttonLink
+            }
+            associates {
+              name
+              description
+              roleService
+              link
+              
+              image {
+                node {
+                  id
+                  sourceUrl
+                  altText
+                }
+              }
+            }
+          }
+          ... on PageSectionsPageSectionsContactSectionLayout {
+            __typename
+            eyebrow
+            heading
+            description
+            showMap
+            mapEmbedUrl
+
+            image {
+              node {
+                id
+                sourceUrl
+                altText
+              }
+            }
+          }
+          ... on PageSectionsPageSectionsFaqSectionLayout {
+            __typename
+            eyebrow
+            heading
+            description
+
+            faqGroups {
+              groupTitle
+              groupDescription
+
+              faqs {
+                question
+                answer
+              }
+            }
+          }
+          ... on PageSectionsPageSectionsPropertyListingsLayout {
+            __typename
+
+            eyebrow
+            heading
+            description
+            propertyType
+            columns
+            propertiesPerPage
           }
         }
       }

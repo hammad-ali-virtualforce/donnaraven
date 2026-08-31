@@ -52,7 +52,7 @@ export default function ExpertiseSection({
               className="
                 mb-2
                 font-mulish
-                text-[9px]
+                text-[15px]
                 font-semibold
                 uppercase
                 tracking-[0.3em]
@@ -534,7 +534,46 @@ export default function ExpertiseSection({
             );
           })}
         </div>
+        
       </div>
+      {section.buttonText && section.buttonLink && (
+  <div className="mt-12 flex justify-center">
+    <Link
+      href={section.buttonLink}
+      className="
+        group
+        relative
+        inline-flex
+        items-center
+        justify-center
+        font-mulish
+        text-[15px]
+        font-semibold
+        uppercase
+        tracking-[0.18em]
+        text-[#0b2f53]
+      "
+    >
+      <span>
+        {section.buttonText}
+      </span>
+
+      <span
+        className="
+          absolute
+          bottom-[-10px]
+          left-0
+          h-[3px]
+          w-8
+          bg-[#ff1c0d]
+          transition-all
+          duration-300
+          group-hover:w-full
+        "
+      />
+    </Link>
+  </div>
+)}
     </section>
   );
 }

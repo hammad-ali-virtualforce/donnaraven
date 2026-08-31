@@ -1,4 +1,6 @@
 import SectionRenderer from "@/app/components/sections/SectionRenderer";
+import Header from "@/app/components/layout/Header/Header";
+import PreFooterWrapper from "@/app/components/layout/Prefooter/PreFooterWrapper";
 
 import {
   getPage,
@@ -20,7 +22,13 @@ export default async function HomePage() {
   if (!pageData.page) {
     return null;
   }
+  const page = pageData?.page;
 
+  const branding =
+    globalData.siteSettings
+      .branding.branding;
+const preFooterSettings =
+  globalData.siteSettings.prefooterSettings;
   const sections =
     pageData.page
       .pageSections
@@ -36,13 +44,38 @@ export default async function HomePage() {
       .socialMedia
       .socialLinks || [];
 
+  const headerSettings =
+    globalData.siteSettings
+      .headerSettings
+      .headerSettings;
+
+  const transparentHeader =
+    page?.pageSettings
+      ?.transparentHeader ?? true;
   return (
     <main>
+      <Header
+                headerMenu={
+                  globalData.headerMenu.nodes
+                }
+                hamburgerMenu={
+                  globalData.hamburgerMenu.nodes
+                }
+                branding={branding}
+                contact={contact}
+                socials={socials}
+                settings={
+                  headerSettings
+                }
+              />
       <SectionRenderer
         sections={sections}
         contact={contact}
         socials={socials}
       />
+      <PreFooterWrapper
+              settings={preFooterSettings}
+              />
     </main>
   );
 }

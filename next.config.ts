@@ -9,7 +9,7 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname:
           "donnaraven.yourvirtualforce.com",
-        pathname: "/donnaraven/wp-content/uploads/**",
+        pathname: "/wp-content/uploads/**",
       },
     ],
   },

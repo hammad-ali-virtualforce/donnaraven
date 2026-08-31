@@ -51,30 +51,12 @@ export default async function RootLayout({
   const footerSettings =
     data.siteSettings.footerSettings
       .footerSettings;
-const preFooterSettings =
-  data.siteSettings.prefooterSettings;
+
   return (
     <html lang="en">
       <body className={tenorSans.variable}>
-        <Header
-          headerMenu={
-            data.headerMenu.nodes
-          }
-          hamburgerMenu={
-            data.hamburgerMenu.nodes
-          }
-          branding={branding}
-          contact={contact}
-          socials={socials}
-          settings={
-            headerSettings
-          }
-        />
-
         {children}
-        <PreFooterWrapper
-          settings={preFooterSettings}
-        />
+        
         <Footer
           menu={
             data.hamburgerMenu

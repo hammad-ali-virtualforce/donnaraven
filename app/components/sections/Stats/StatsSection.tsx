@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-
+import AnimatedCounter from "@/app/components/animatedCounter/animatedCounter";
 import type {
   StatsSectionData,
 } from "@/app/types/page-builder";
@@ -18,7 +18,9 @@ export default function StatsSection({
   const backgroundColor =
     section.backgroundColor ||
     "#0B2F53";
-
+    const contentBackgroundColor =
+    section.contentBackgroundColor ||
+    "#f3f3f3";
   const stats =
     section.stats ?? [];
   return (
@@ -27,9 +29,6 @@ export default function StatsSection({
         relative
         overflow-hidden
       "
-      style={{
-        backgroundColor,
-      }}
     >
       <div
         className="
@@ -38,6 +37,7 @@ export default function StatsSection({
           grid-cols-1
           lg:grid-cols-2
         "
+        style={{backgroundColor}}
       >
         {/* LEFT STATS AREA */}
 
@@ -102,7 +102,7 @@ export default function StatsSection({
                 font-tenor
                 text-[clamp(12rem,25vw,34rem)]
                 leading-none
-                text-[#ff4c41]/15
+                text-[#ff1c0d]/15
                 select-none
               "
             >
@@ -119,24 +119,40 @@ export default function StatsSection({
               grid-cols-2
             "
           >
-            {stats.map(
-              (stat, index) => {
-                 const isLeftColumn = index % 2 === 0;
+            {stats.map((stat, index) => {
+              const isLeftColumn =
+                index % 2 === 0;
 
-                // Everything except the final row gets bottom border
-                const isLastRow =
-                  index >= stats.length - 2;
+              const isLastRow =
+                index >= stats.length - 2;
 
-                return (
+              const numericValue =
+                Number(stat.value);
+
+              return (
                 <div
                   key={index}
                   className={`
-                  px-12
-                  
-                  ${isLeftColumn ? "border-r border-white/20" : ""}
-                  ${!isLastRow ? "border-b border-white/20 pb-22" : ""}
-                  ${isLastRow ? "py-22" : ""}
-                `}
+                    px-12
+
+                    ${
+                      isLeftColumn
+                        ? "border-r border-white/20"
+                        : ""
+                    }
+
+                    ${
+                      !isLastRow
+                        ? "border-b border-white/20 pb-22"
+                        : ""
+                    }
+
+                    ${
+                      isLastRow
+                        ? "py-22"
+                        : ""
+                    }
+                  `}
                 >
                   <div
                     className="
@@ -144,36 +160,32 @@ export default function StatsSection({
                       text-[80px]
                     "
                   >
-                    {stat.value}{stat.label}
-
-                    {stat.suffix && (
-                      <span className="text-[28px] flex">
+                    {!Number.isNaN(numericValue) ? (
+                      <AnimatedCounter
+                        value={numericValue}
+                        suffix={stat.suffix}
+                      />
+                    ) : (
+                      <>
+                        {stat.value}
                         {stat.suffix}
+                      </>
+                    )}
+
+                    {stat.label && (
+                      <span
+                        className="
+                          flex
+                          text-[28px]
+                        "
+                      >
+                        {stat.label}
                       </span>
                     )}
                   </div>
-
-                  {stat.label && (
-                    <p
-                      className="
-                        mt-4
-                        max-w-[180px]
-                        font-mulish
-                        text-[9px]
-                        font-semibold
-                        uppercase
-                        leading-5
-                        tracking-[0.15em]
-                        text-white/70
-                      "
-                    >
-                      
-                    </p>
-                  )}
                 </div>
-              )
-              }
-            )}
+              );
+            })}
           </div>
         </div>
 
@@ -183,7 +195,6 @@ export default function StatsSection({
           className="
             flex
             items-center
-            bg-white
             px-6
             py-20
             text-[#0B2F53]
@@ -191,6 +202,7 @@ export default function StatsSection({
             lg:px-16
             xl:px-20
           "
+          style={{backgroundColor:contentBackgroundColor}}
         >
           <div
             className="
@@ -223,6 +235,7 @@ export default function StatsSection({
                   uppercase
                   leading-[0.9]
                   tracking-[-0.035em]
+                  text-black
                 "
               >
                 {section.heading}

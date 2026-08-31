@@ -25,8 +25,7 @@ function formatPrice(
 export default function ListingCard({
   listing,
 }: ListingCardProps) {
-  const href =
-    listing.url || "#";
+  
   return (
     <article
       className="
@@ -40,7 +39,7 @@ export default function ListingCard({
       "
     >
       <Link
-        href={href}
+        href={`/property/${listing.slug}`}
         className="
           absolute
           inset-0

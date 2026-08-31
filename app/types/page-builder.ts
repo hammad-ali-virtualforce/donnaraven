@@ -54,6 +54,11 @@ export type PageResponse = {
     id: string;
     title: string;
 
+    pageSettings: {
+      transparentHeader: boolean | null;
+      showPrefooter: boolean | null;
+    } | null;
+
     pageSections: {
       pageSections: PageSection[];
     };
@@ -93,6 +98,7 @@ export type StatItem = {
   value: string | null;
   suffix: string | null;
   label: string | null;
+  enableCounter: boolean | null;
 };
 
 export type StatsSectionData = {
@@ -102,7 +108,7 @@ export type StatsSectionData = {
   eyebrow: string | null;
   heading: string | null;
   description: string | null;
-
+  contentBackgroundColor: string | null;
   backgroundColor: string | null;
   opacity: boolean | null;
   backgroundImage: {
@@ -137,7 +143,8 @@ export type ExpertiseSectionData = {
 
   eyebrow: string | null;
   heading: string | null;
-  
+  buttonText: string | null;
+  buttonLink: string | null;
   defaultImage: {
     node: {
       id: string;
@@ -149,18 +156,27 @@ export type ExpertiseSectionData = {
   areas: ExpertiseArea[] | null;
 };
 export type ReviewItem = {
-  reviewerName: string | null;
-  rating: number | null;
-  review: string | null;
+  id: string;
+  title: string;
+
+  reviews: {
+    review: string | null;
+    rating: number | null;
+    featured: boolean | null;
+    clientType: string | null;
+    location: string | null;
+  } | null;
 };
 
 export type ReviewsSectionData = {
-  __typename:
-    "PageSectionsPageSectionsReviewsSectionLayout";
+  __typename: "PageSectionsPageSectionsReviewsSectionLayout";
 
   eyebrow: string | null;
   heading: string | null;
   description: string | null;
+
+  displayStyle: "slider" | "grid" | null;
+  reviewsPerPage: number | null;
 
   buttonText: string | null;
   buttonLink: string | null;
@@ -173,7 +189,9 @@ export type ReviewsSectionData = {
     };
   } | null;
 
-  reviews: ReviewItem[] | null;
+  reviews: {
+    nodes: ReviewItem[];
+  } | null;
 };
 export type StepIcon =
   | "clipboard-check"
@@ -208,6 +226,127 @@ export type StepsSectionData = {
   steps: StepItem[] | null;
 };
 
+export type InnerHeroSectionData = {
+  __typename: "PageSectionsPageSectionsInnerHeroLayout";
+
+  eyebrow: string | null;
+  heading: string | null;
+  description: string | null;
+
+  textColor: string | null;
+  overlayOpacity: number | null;
+
+  backgroundImage: {
+    node: {
+      id: string;
+      sourceUrl: string;
+      altText: string | null;
+    };
+  } | null;
+
+  portraitImage: {
+    node: {
+      id: string;
+      sourceUrl: string;
+      altText: string | null;
+    };
+  } | null;
+};
+export type AssociateItem = {
+  name: string | null;
+  roleService: string | null;
+  description: string | null;
+  link: string | null;
+
+
+  image: {
+    node: {
+      id: string;
+      sourceUrl: string;
+      altText: string | null;
+    };
+  } | null;
+};
+export type AssociatesSectionButton = {
+  buttonText: string | null;
+  buttonLink: string | null;
+};
+export type AssociatesSectionData = {
+  __typename: "PageSectionsPageSectionsAssociatesSectionLayout";
+
+  eyebrow: string | null;
+  heading: string | null;
+  description: string | null;
+  buttons: AssociatesSectionButton[] | null;
+  associates: AssociateItem[] | null;
+};
+export type ContactSectionData = {
+  __typename:
+    "PageSectionsPageSectionsContactSectionLayout";
+
+  eyebrow: string | null;
+  heading: string | null;
+  description: string | null;
+
+  showMap: boolean | null;
+  mapEmbedUrl: string | null;
+
+  image: {
+    node: {
+      id: string;
+      sourceUrl: string;
+      altText: string | null;
+    };
+  } | null;
+};
+
+export type FaqItem = {
+  question: string | null;
+  answer: string | null;
+};
+
+export type FaqGroup = {
+  groupTitle: string | null;
+  groupDescription: string | null;
+  faqs: FaqItem[] | null;
+};
+
+export type FaqSectionData = {
+  __typename:
+    "PageSectionsPageSectionsFaqSectionLayout";
+
+  eyebrow: string | null;
+  heading: string | null;
+  description: string | null;
+
+  faqGroups: FaqGroup[] | null;
+};
+export type PropertyListingsSectionData = {
+  __typename:
+    "PageSectionsPageSectionsPropertyListingsLayout";
+
+  eyebrow: string | null;
+
+  heading: string | null;
+
+  description: string | null;
+
+  propertyType:
+    | "all"
+    | "active"
+    | "sold"
+    | null;
+
+  columns:
+    | "3"
+    | "4"
+    | null;
+
+  propertiesPerPage:
+    | number
+    | null;
+};
+
 export type PageSection =
    | HeroSliderSection
   | ListingsSectionData
@@ -216,6 +355,11 @@ export type PageSection =
   | ExpertiseSectionData
   | ReviewsSectionData
   | StepsSectionData
+  | InnerHeroSectionData
+  | AssociatesSectionData
+  | ContactSectionData
+  | FaqSectionData
+  | PropertyListingsSectionData
   | {
       __typename: string;
       [key: string]: unknown;

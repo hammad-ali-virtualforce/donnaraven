@@ -5,6 +5,11 @@ import StatsSection from "@/app/components/sections/Stats/StatsSection";
 import ExpertiseSection from "@/app/components/sections/Expertise/ExpertiseSection";
 import ReviewsSection from "@/app/components/sections/Reviews/ReviewsSection";
 import StepsSection from "@/app/components/sections/Steps/StepsSection";
+import InnerHeroSection from "@/app/components/sections/InnerHero/InnerHeroSection";
+import AssociatesSection from "@/app/components/sections/Associates/AssociatesSection";
+import ContactSection from "@/app/components/sections/Contact/ContactSection";
+import FaqSection from "@/app/components/sections/Faq/FaqSection";
+import PropertyListingsSection from "@/app/components/sections/Listings/PropertyListingsSection";
 
 import type {
   StatsSectionData,
@@ -33,6 +38,25 @@ import type {
 import type {
   ExpertiseSectionData,
 } from "@/app/types/page-builder";
+import type {
+  InnerHeroSectionData,
+} from "@/app/types/page-builder";
+import type {
+  AssociatesSectionData,
+} from "@/app/types/page-builder";
+
+import type {
+  ContactSectionData,
+} from "@/app/types/page-builder";
+
+import type {
+  FaqSectionData,
+} from "@/app/types/page-builder";
+
+import type {
+  PropertyListingsSectionData,
+} from "@/app/types/page-builder";
+
 
 type SectionRendererProps = {
   sections: PageSection[];
@@ -121,6 +145,45 @@ export default function SectionRenderer({
                   section={
                     section as StepsSectionData
                   }
+                />
+              );
+            case "PageSectionsPageSectionsInnerHeroLayout":
+              return (
+                <InnerHeroSection
+                  key={`${section.__typename}-${index}`}
+                  section={
+                    section as InnerHeroSectionData
+                  }
+                />
+              );
+            case "PageSectionsPageSectionsAssociatesSectionLayout":
+              return (
+                <AssociatesSection
+                  key={`${section.__typename}-${index}`}
+                  section={
+                    section as AssociatesSectionData
+                  }
+                />
+              );
+            case "PageSectionsPageSectionsContactSectionLayout":
+              return (
+                <ContactSection
+                  key={`contact-${index}`}
+                  section={section as ContactSectionData} 
+                />
+              );
+            case "PageSectionsPageSectionsFaqSectionLayout":
+              return (
+                <FaqSection
+                  key={`faq-${index}`}
+                  section={section as FaqSectionData}
+                />
+              )
+            case "PageSectionsPageSectionsPropertyListingsLayout":
+              return (
+                <PropertyListingsSection
+                  key={`property-listings-${index}`}
+                  section={section as PropertyListingsSectionData}
                 />
               );
             default:

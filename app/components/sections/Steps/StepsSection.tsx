@@ -15,6 +15,9 @@ import {
   Handshake,
   BookSearch,
   KeyRound,
+  Trophy,
+  ChartLine,
+  LayersArrowUp,
 } from "lucide-react";
 
 const iconMap = {
@@ -24,6 +27,9 @@ const iconMap = {
   "handshake": Handshake,
   "clipboard-search": BookSearch,
   "key-round": KeyRound,
+  "trophy": Trophy,
+  "chart-line": ChartLine,
+  "layers-arrow-up" : LayersArrowUp
 };
 
 
@@ -70,7 +76,7 @@ export default function StepsSection({
               className="
                 mb-3
                 font-mulish
-                text-[10px]
+                text-[15px]
                 font-semibold
                 uppercase
                 tracking-[0.3em]
@@ -216,222 +222,244 @@ export default function StepsSection({
 
       {/* STEPS */}
 
+      {/* STEPS */}
+
+<div
+  className="
+    mx-auto
+    mt-16
+    flex
+    w-full
+    max-w-[1700px]
+    flex-wrap
+    justify-center
+    px-6
+    md:px-10
+    xl:px-16
+    
+  "
+>
+  {steps.map((step, index) => {
+    const Icon = step.icon
+      ? iconMap[step.icon]
+      : null;
+
+    const card = (
       <div
         className="
-          mx-auto
-          mt-16
-          grid
+          group
+          relative
+          flex
+          h-full
+          min-h-[360px]
           w-full
-          max-w-[1700px]
-          grid-cols-1
-          gap-px
-          px-6
-          md:grid-cols-2
-          md:px-10
-          lg:grid-cols-3
-          xl:grid-cols-6
-          xl:px-16
+          flex-col
+          items-center
+          justify-center
+          overflow-hidden
+          
+          text-center
+          text-white
+
+          transition-all
+          duration-500
+mx-1
+          
         "
+        
       >
-        {steps.map(
-          (step, index) => {
-            const Icon =
-            step.icon
-                ? iconMap[
-                    step.icon 
-                ]
-                : null;
+        <div className="
+        
+          flex
+          h-full
+          min-h-[360px]
+          w-full
+          flex-col
+          items-center
+          justify-center
+          hover:grayscale-[1]
+          overflow-hiddenpx-6
+          py-10" style={{background:"url('/stepcardsbg.png')",}}>
+        {/* NUMBER */}
 
-            const card = (
-              <div
-                className="
-                  group
-                  relative
-                  flex
-                  min-h-[340px]
-                  flex-col
-                  items-center
-                  justify-center
-                  overflow-hidden
-                  bg-[#ff4c41]
-                  px-6
-                  py-10
-                  text-center
-                  text-white
-                  transition-all
-                  duration-500
-                  hover:bg-[#fff]
-                  hover:border
-                  hover:border-[#ff4c41]
-                "
-              >
-                {/* NUMBER */}
+        {step.stepNumber && (
+          <span
+            className="
+              absolute
+              left-5
+              top-5
 
-                {step.stepNumber && (
-                  <span
-                    className="
-                      absolute
-                      left-5
-                      top-5
-                      font-mulish
-                      text-[15px]
-                      font-semibold
-                      tracking-[0.18em]
-                      text-white
-                      group-hover:text-[#000]
-                    "
-                  >
-                    {
-                      step.stepNumber
-                    }
-                  </span>
-                )}
+              font-mulish
+              text-[15px]
+              font-semibold
+              tracking-[0.18em]
 
-                {/* ICON */}
+              text-[#white]
 
-                {Icon && (
-                <Icon
-                    strokeWidth={1.2}
-                    className="
-                    h-16
-                    w-16
-                    text-white
-                    transition-all
-                    duration-500
-                    group-hover:scale-110
-                    group-hover:text-black
-                    "
-                />
-                )}
+              transition-colors
+              duration-500
 
-                {/* TITLE */}
+              group-hover:text-white
+            "
+          >
+            {step.stepNumber}
+          </span>
+        )}
 
-                {step.title && (
-                  <h3
-                    className="
-                      max-w-[190px]
-                      font-tenor
-                      text-[20px]
-                      uppercase
-                      leading-[1.15]
-                      tracking-[0.02em]
-                      group-hover:text-[#000]
-                    "
-                  >
-                    {step.title}
-                  </h3>
-                )}
+        {/* ICON */}
 
-                {/* DESCRIPTION */}
+        {Icon && (
+          <Icon
+            strokeWidth={1.2}
+            className="
+              mb-5
+              h-16
+              w-16
 
-                {step.description && (
-                  <p
-                    className="
-                      mt-5
-                      max-w-[220px]
-                      font-mulish
-                      text-[12px]
-                      leading-6
-                      text-white/70
-                      transition-colors
-                      duration-500
-                      group-hover:text-[#000]
-                    "
-                  >
-                    {
-                      step.description
-                    }
-                  </p>
-                )}
+              shrink-0
 
-                {/* EXPLORE */}
+              text-[#white]
 
-                {step.link && (
-                  <div
-                    className="
-                      mt-6
-                      flex
-                      items-center
-                      gap-3
-                      font-mulish
-                      text-[15px]
-                      font-semibold
-                      uppercase
-                      tracking-[0.18em]
-                      opacity-0
-                      transition-all
-                      duration-500
-                      group-hover:opacity-100
-                      text-[#000]
-                      relative
-                    "
-                  >
-                    Explore
+              transition-all
+              duration-500
 
-                    <span
-                      className="
-                        h-px
-                        w-7
-                        bg-black
-                        transition-all
-                        duration-300
-                        hover:w-10
-                        absolute
-                        bottom-[-10px]
-                      "
-                    />
-                  </div>
-                )}
+              group-hover:scale-110
+              group-hover:text-white
+            "
+          />
+        )}
 
-                {/* LARGE DECORATIVE STEP */}
+        {/* TITLE */}
 
-                {step.stepNumber && (
-                  <span
-                    className="
-                      pointer-events-none
-                      absolute
-                      bottom-[-25px]
-                      right-[-5px]
-                      font-tenor
-                      text-[110px]
-                      leading-none
-                      text-white/[0.035]
-                    "
-                  >
-                    {
-                      step.stepNumber
-                    }
-                  </span>
-                )}
-              </div>
-            );
+        {step.title && (
+          <h3
+            className="
+              max-w-[200px]
 
-            if (step.link) {
-              return (
-                <Link
-                  key={index}
-                  href={step.link}
-                  className="
-                    block
-                    min-w-0
-                  "
-                >
-                  {card}
-                </Link>
-              );
-            }
+              font-tenor
+              text-[20px]
+              uppercase
+              leading-[1.15]
+              tracking-[0.02em]
 
-            return (
-              <div
-                key={index}
-                className="min-w-0"
-              >
-                {card}
-              </div>
-            );
-          }
+              transition-colors
+              duration-500
+
+              group-hover:text-white
+            "
+          >
+            {step.title}
+          </h3>
+        )}
+
+        {/* DESCRIPTION */}
+
+        {step.description && (
+          <p
+            className="
+              mt-5
+              max-w-[220px]
+
+              font-mulish
+              text-[12px]
+              leading-6
+
+              text-white
+
+              transition-colors
+              duration-500
+
+              group-hover:text-white
+            "
+          >
+            {step.description}
+          </p>
+        )}
+
+        {/* EXPLORE */}
+
+        {step.link && (
+          <div
+            className="
+              relative
+              mt-6
+
+              flex
+              items-center
+              justify-center
+
+              font-mulish
+              text-[13px]
+              font-semibold
+              uppercase
+              tracking-[0.18em]
+
+              text-white
+
+              opacity-0
+
+              transition-all
+              duration-500
+
+              group-hover:opacity-100
+            "
+          >
+            Explore
+
+            <span
+              className="
+                absolute
+                bottom-[-10px]
+                left-0
+
+                h-px
+                w-7
+
+                bg-white
+
+                transition-all
+                duration-300
+
+                group-hover:w-full
+              "
+            />
+          </div>
         )}
       </div>
+      </div>
+    );
+
+    const wrapperClass = `
+      flex
+      w-full
+
+      md:w-1/2
+      lg:w-1/3
+      xl:w-1/6
+    `;
+
+    if (step.link) {
+      return (
+        <Link
+          key={index}
+          href={step.link}
+          className={wrapperClass}
+        >
+          {card}
+        </Link>
+      );
+    }
+
+    return (
+      <div
+        key={index}
+        className={wrapperClass}
+      >
+        {card}
+      </div>
+    );
+  })}
+</div>
     </section>
   );
 }
