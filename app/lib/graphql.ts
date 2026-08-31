@@ -1,50 +1,140 @@
-const WORDPRESS_URL = process.env.WORDPRESS_URL;
+const WORDPRESS_URL =
+  process.env.WORDPRESS_URL?.replace(/\/+$/, "");
 
 if (!WORDPRESS_URL) {
-  throw new Error("WORDPRESS_URL is missing from .env.local");
+  throw new Error(
+    "WORDPRESS_URL is missing from environment variables"
+  );
 }
+
+const GRAPHQL_URL =
+  `${WORDPRESS_URL}/graphql/`;
 
 export async function fetchGraphQL<T>(
   query: string,
-  variables?: Record<string, unknown>
+  variables?: Record<
+    string,
+    unknown
+  >
 ): Promise<T> {
-  const response = await fetch(`${WORDPRESS_URL}/graphql/`, {
-    method: "POST",
+  const response = await fetch(
+    GRAPHQL_URL,
+    {
+      method: "POST",
 
-    headers: {
-      "Content-Type": "application/json",
-    },
+      headers: {
+        "Content-Type":
+          "application/json",
 
-    body: JSON.stringify({
-      query,
-      variables,
-    }),
+        Accept:
+          "application/json",
+      },
 
-    next: {
-      revalidate: 60,
-    },
-  });
+      body: JSON.stringify({
+        query,
+        variables,
+      }),
+
+      next: {
+        revalidate: 60,
+      },
+    }
+  );
+
+  const contentType =
+    response.headers.get(
+      "content-type"
+    );
 
   if (!response.ok) {
-  const errorText = await response.text();
+    const errorText =
+      await response.text();
 
-  console.error(
-    "GraphQL HTTP Error:",
-    response.status,
-    errorText
-  );
+    console.error(
+      "GraphQL HTTP Error:",
+      {
+        status:
+          response.status,
 
-  throw new Error(
-    `GraphQL request failed with status ${response.status}: ${errorText}`
-  );
-}
+        statusText:
+          response.statusText,
 
-  const json = await response.json();
+        requestedUrl:
+          GRAPHQL_URL,
+
+        finalUrl:
+          response.url,
+
+        redirected:
+          response.redirected,
+
+        contentType,
+
+        response:
+          errorText.slice(
+            0,
+            700
+          ),
+      }
+    );
+
+    throw new Error(
+      `GraphQL request failed with status ${response.status}`
+    );
+  }
+
+  if (
+    !contentType?.includes(
+      "application/json"
+    )
+  ) {
+    const responseText =
+      await response.text();
+
+    console.error(
+      "GraphQL returned non-JSON:",
+      {
+        requestedUrl:
+          GRAPHQL_URL,
+
+        finalUrl:
+          response.url,
+
+        redirected:
+          response.redirected,
+
+        contentType,
+
+        response:
+          responseText.slice(
+            0,
+            700
+          ),
+      }
+    );
+
+    throw new Error(
+      "GraphQL endpoint returned HTML instead of JSON"
+    );
+  }
+
+  const json =
+    await response.json();
 
   if (json.errors) {
+    console.error(
+      "GraphQL Errors:",
+      json.errors
+    );
+
     throw new Error(
       json.errors
-        .map((error: { message: string }) => error.message)
+        .map(
+          (error: {
+            message: string;
+          }) =>
+            error.message
+        )
         .join("\n")
     );
   }
