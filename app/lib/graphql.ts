@@ -8,7 +8,7 @@ export async function fetchGraphQL<T>(
   query: string,
   variables?: Record<string, unknown>
 ): Promise<T> {
-  const response = await fetch(`${WORDPRESS_URL}/graphql`, {
+  const response = await fetch(`${WORDPRESS_URL}/graphql/`, {
     method: "POST",
 
     headers: {
