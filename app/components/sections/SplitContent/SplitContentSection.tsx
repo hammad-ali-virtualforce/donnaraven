@@ -156,7 +156,7 @@ export default function SplitContentSection({
                 flex
 
                 items-center
-
+                my-4
                 gap-4
 
                 relative

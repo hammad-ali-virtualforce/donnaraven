@@ -515,7 +515,8 @@ export default function HamburgerPanel({
                                 tracking-[-0.035em]
                                 transition-colors
                                 duration-300
-                                text-6xl
+                                md:text-6xl
+                                text-3xl
                                 ${
                                   isActive
                                     ? "text-[#0d3150]"
@@ -536,7 +537,7 @@ export default function HamburgerPanel({
                           {item.children
                             .length >
                             0 && (
-                            <div className="mt-4 lg:hidden">
+                            <div className="mt-4 hidden">
                               <button
                                 type="button"
                                 onClick={() =>
@@ -559,7 +560,7 @@ export default function HamburgerPanel({
                               </button>
 
                               {isActive && (
-                                <ul className="space-y-3 border-l border-[#0d3150]/20 pl-5">
+                                <ul className="space-y-3 border-l border-[#0d3150]/20 pl-5 hidden md:flex">
                                   {item.children.map(
                                     (
                                       child

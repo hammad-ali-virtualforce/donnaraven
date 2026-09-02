@@ -482,7 +482,7 @@ export default function Footer({
             <div
               className="
                 flex
-                flex-wrap
+                md:flex-wrap
                 items-center
                 justify-center
                 gap-5
@@ -647,7 +647,7 @@ export default function Footer({
               
           </ul>
         </nav>
-      <div className="flex justify-center items-center py-8">
+      <div className="flex justify-center items-center py-8 text-center">
         <p>
             {settings.copyright ||
               `© ${new Date().getFullYear()} ${

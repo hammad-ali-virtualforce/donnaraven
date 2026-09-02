@@ -69,8 +69,9 @@ export default function StatsSection({
                 50vw
               "
               className={`
-                object-fill
+                md:object-fill
                 object-center
+                object-cover
                 
                 ${section.opacity? "opacity-30":""}
               `}
@@ -116,7 +117,8 @@ export default function StatsSection({
               z-10
               grid
               w-full
-              grid-cols-2
+              md:grid-cols-2
+              grid-cols-1
             "
           >
             {stats.map((stat, index) => {
@@ -137,13 +139,13 @@ export default function StatsSection({
 
                     ${
                       isLeftColumn
-                        ? "border-r border-white/20"
+                        ? "md:border-r border-white/20"
                         : ""
                     }
 
                     ${
                       !isLastRow
-                        ? "border-b border-white/20 pb-22"
+                        ? "md:border-b border-white/20 pb-22"
                         : ""
                     }
 
@@ -302,7 +304,7 @@ export default function StatsSection({
                 items-center
 
                 gap-4
-
+                my-4
                 relative
                           "
                         >

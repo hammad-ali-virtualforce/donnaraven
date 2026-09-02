@@ -263,6 +263,7 @@ export default function StepsSection({
                       flex
                       items-center
                       gap-4
+                      my-4
                     "
                   >
                     <span>
@@ -376,7 +377,7 @@ export default function StepsSection({
                   py-10
                   transition-all
                   duration-500
-
+                  my-2
                   ${
                     isActive
                       ? "grayscale-[1]"

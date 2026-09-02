@@ -120,6 +120,8 @@ export default function ReviewsSlider({
             bg-[#0b2f53]
             text-white
             lg:min-h-[720px]
+            md:order-1
+            order-2
           "
         >
           {/* BACKGROUND IMAGE */}
@@ -446,6 +448,8 @@ export default function ReviewsSlider({
             lg:min-h-[720px]
             lg:px-16
             xl:px-20
+            md:order-2
+            order-1
           "
         >
           <div

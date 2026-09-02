@@ -54,7 +54,7 @@ export default function PreFooter({
               alt=""
               fill
               priority={false}
-              className="object-cover"
+              className="object-cover hidden md:flex"
               style={{position:"absolute", top:"170px", left:"120px"}}
             />
           )}
@@ -165,7 +165,8 @@ export default function PreFooter({
                   [&_input:focus]:border-white
                   [&_textarea:focus]:border-white
 
-                  [&_button]:min-w-[190px]
+                  [&_button]:md:min-w-[190px]
+                  [&_button]:min-w-full
                   [&_button]:border
                   [&_button]:border-white
                   [&_button]:bg-transparent
