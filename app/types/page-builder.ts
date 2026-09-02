@@ -339,7 +339,10 @@ export type PropertyListingsSectionData = {
   heading: string | null;
 
   description: string | null;
-
+  primaryButtonText: string | null;
+  primaryButtonLink: string | null;
+  secondaryButtonText: string | null;
+  secondaryButtonLink: string | null;
   propertyType:
     | "all"
     | "active"
