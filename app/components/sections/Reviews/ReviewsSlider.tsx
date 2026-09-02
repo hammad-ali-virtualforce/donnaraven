@@ -61,7 +61,7 @@ function StarRating({
         <span
           key={index}
           className="
-            text-[15px]
+            text-[25px]
             leading-none
           "
         >
