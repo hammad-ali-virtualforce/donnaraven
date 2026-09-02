@@ -10,6 +10,7 @@ import AssociatesSection from "@/app/components/sections/Associates/AssociatesSe
 import ContactSection from "@/app/components/sections/Contact/ContactSection";
 import FaqSection from "@/app/components/sections/Faq/FaqSection";
 import PropertyListingsSection from "@/app/components/sections/Listings/PropertyListingsSection";
+import ContentSection from "@/app/components/sections/Content/ContentSection";
 
 import type {
   StatsSectionData,
@@ -55,6 +56,10 @@ import type {
 
 import type {
   PropertyListingsSectionData,
+} from "@/app/types/page-builder";
+
+import type {
+  ContentSectionData,
 } from "@/app/types/page-builder";
 
 
@@ -184,6 +189,13 @@ export default function SectionRenderer({
                 <PropertyListingsSection
                   key={`property-listings-${index}`}
                   section={section as PropertyListingsSectionData}
+                />
+              );
+            case "PageSectionsPageSectionsContentSectionLayout":
+              return (
+                <ContentSection
+                  key={`content-${index}`}
+                  section={section as ContentSectionData}
                 />
               );
             default:

@@ -20,6 +20,10 @@ export default function PropertyListingsSection({
     eyebrow,
     heading,
     description,
+    primaryButtonText,
+    primaryButtonLink,
+    secondaryButtonText,
+    secondaryButtonLink,
     propertyType,
     columns,
     propertiesPerPage = 12,
@@ -103,6 +107,7 @@ const normalizedPropertyType =
         py-32
         text-[#0b2f53] 
       "
+      id="properties"
     >
       <div
         className="

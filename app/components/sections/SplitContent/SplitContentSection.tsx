@@ -230,7 +230,7 @@ export default function SplitContentSection({
                   ease-out
                   
                 "
-                style={{left:"-20%",height:"120%",minWidth:"120%",position:"absolute",zIndex:"1"}}
+                style={{left:"-10%",height:"110%",minWidth:"110%",position:"absolute",zIndex:"1"}}
               />
 
               <div

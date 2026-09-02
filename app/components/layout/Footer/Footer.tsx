@@ -472,13 +472,6 @@ export default function Footer({
               {settings.dmcaDisclaimer}
             </p>
           )}
-           <p>
-            {settings.copyright ||
-              `© ${new Date().getFullYear()} ${
-                branding.siteName ||
-                "Donna Raven"
-              }. All rights reserved.`}
-          </p>
         </div>
 
         {/* SUPPORTING LOGOS */}
@@ -556,6 +549,112 @@ export default function Footer({
               )}
             </div>
           )}
+      </div>
+      <nav className="">
+          <ul
+            className="
+              flex
+              flex-wrap
+              items-center
+              justify-center
+              gap-x-10
+              gap-y-4
+              md:gap-x-14
+              lg:gap-x-16
+            "
+          >
+                <li>
+                  <Link
+                    href="/https://insiderealestate.com/"
+                    target="_blank"
+                    className="
+                      font-mulish
+                      text-[13px]
+                      uppercase
+                      tracking-[0.15em]
+                      transition-opacity
+                      hover:opacity-50
+                    "
+                  >
+                    © 2026 Inside Real Estate
+                   
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/terms-of-use"
+                    className="
+                      font-mulish
+                      text-[13px]
+                      uppercase
+                      tracking-[0.15em]
+                      transition-opacity
+                      hover:opacity-50
+                    "
+                  >
+                    Terms of Use
+                   
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/privacy-policy"
+                    className="
+                      font-mulish
+                      text-[13px]
+                      uppercase
+                      tracking-[0.15em]
+                      transition-opacity
+                      hover:opacity-50
+                    "
+                  >
+                    Privacy Policy
+                   
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/accessibility"
+                    className="
+                      font-mulish
+                      text-[13px]
+                      uppercase
+                      tracking-[0.15em]
+                      transition-opacity
+                      hover:opacity-50
+                    "
+                  >
+                    Accessibility
+                   
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/fair-housing-statement"
+                    className="
+                      font-mulish
+                      text-[13px]
+                      uppercase
+                      tracking-[0.15em]
+                      transition-opacity
+                      hover:opacity-50
+                    "
+                  >
+                    Fair Housing Statement
+                   
+                  </Link>
+                </li>
+              
+          </ul>
+        </nav>
+      <div className="flex justify-center items-center py-8">
+        <p>
+            {settings.copyright ||
+              `© ${new Date().getFullYear()} ${
+                branding.siteName ||
+                "Donna Raven"
+              }. All rights reserved.`}
+          </p>
       </div>
     </footer>
   );

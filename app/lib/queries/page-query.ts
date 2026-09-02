@@ -52,6 +52,10 @@ export const PAGE_QUERY = `
             eyebrow
             heading
             listingType
+            primaryButtonText
+            primaryButtonLink
+            secondaryButtonText
+            secondaryButtonLink
             numberOfListings
           }
           ... on PageSectionsPageSectionsSplitContentSectionLayout {
@@ -109,6 +113,7 @@ export const PAGE_QUERY = `
             heading
             buttonText
             buttonLink
+            gridColumns
             defaultImage {
               node {
                 id
@@ -269,6 +274,13 @@ export const PAGE_QUERY = `
             propertyType
             columns
             propertiesPerPage
+          }
+          ... on PageSectionsPageSectionsContentSectionLayout {
+            __typename
+            eyebrow
+            heading
+            content
+            contentWidth
           }
         }
       }

@@ -22,7 +22,11 @@ export default function ExpertiseSection({
 
   const [activeIndex, setActiveIndex] =
     useState<number | null>(null);
-
+const gridClass =
+  section.gridColumns == "3"
+    ? "md:grid-cols-3"
+    : "md:grid-cols-4";
+    console.log("grid class", gridClass)
   return (
     <section
       className="
@@ -195,13 +199,13 @@ export default function ExpertiseSection({
         ========================== */}
 
         <div
-          className="
-            relative
-            z-10
-            grid
-            grid-cols-2
-            md:grid-cols-4
-          "
+          className={`
+              relative
+              z-10
+              grid
+              grid-cols-1
+              ${gridClass}
+            `}
         >
           {areas.map((area, index) => {
             const cardImage =

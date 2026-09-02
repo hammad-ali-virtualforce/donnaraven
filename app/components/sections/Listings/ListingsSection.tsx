@@ -19,7 +19,7 @@ export default function ListingsSection({
 
   const listings =
     demoListings.slice(0, limit);
-
+console.log("section listing", section)
   return (
     <section
       className="
@@ -28,6 +28,7 @@ export default function ListingsSection({
         text-[#0b2f53]
         md:py-20
       "
+      id="properties"
     >
       {/* =========================
           SECTION HEADER
@@ -103,63 +104,67 @@ export default function ListingsSection({
               tracking-[0.18em]
             "
           >
-            <Link
-              href="/active-listings"
-              className="
-                group
-                flex
-                items-center
-                gap-4
-                relative
-              "
-            >
-              <span>
-                View Active
-              </span>
-
-              <span
+            {section.primaryButtonText && section.primaryButtonLink && (
+              <Link
+                href={section.primaryButtonLink}
                 className="
-                  block
-                  h-[3px]
-                  w-8
-                  bg-[#ff4c41]
-                  transition-all
-                  duration-300
-                  group-hover:w-full
-                  absolute
-                  bottom-[-10px]
+                  group
+                  flex
+                  items-center
+                  gap-4
+                  relative
                 "
-              />
-            </Link>
+              >
+                <span>
+                  {section.primaryButtonText}
+                </span>
 
-            <Link
-              href="/sold-listings"
-              className="
-                group
-                flex
-                items-center
-                gap-4
-                relative
-              "
-            >
-              <span>
-                View Sold
-              </span>
+                <span
+                  className="
+                    block
+                    h-[3px]
+                    w-8
+                    bg-[#ff4c41]
+                    transition-all
+                    duration-300
+                    group-hover:w-full
+                    absolute
+                    bottom-[-10px]
+                  "
+                />
+              </Link>
+            )}
 
-              <span
+            {section.secondaryButtonText && section.secondaryButtonLink && (
+              <Link
+                href={section.secondaryButtonLink}
                 className="
-                 block
-                  h-[3px]
-                  w-8
-                  bg-[#ff4c41]
-                  transition-all
-                  duration-300
-                  group-hover:w-full
-                  absolute
-                  bottom-[-10px]
+                  group
+                  flex
+                  items-center
+                  gap-4
+                  relative
                 "
-              />
-            </Link>
+              >
+                <span>
+                  {section.secondaryButtonText}
+                </span>
+
+                <span
+                  className="
+                    block
+                    h-[3px]
+                    w-8
+                    bg-[#ff4c41]
+                    transition-all
+                    duration-300
+                    group-hover:w-full
+                    absolute
+                    bottom-[-10px]
+                  "
+                />
+              </Link>
+            )}
           </div>
         </div>
       </div>

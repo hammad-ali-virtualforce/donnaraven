@@ -230,7 +230,7 @@ export default function StatsSection({
               <h2
                 className="
                   font-tenor
-                  text-[clamp(3rem,5vw,6.2rem)]
+                  text-[60px]
                   font-normal
                   uppercase
                   leading-[0.9]

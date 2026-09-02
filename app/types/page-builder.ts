@@ -45,6 +45,14 @@ export type ListingsSectionData = {
   listingType: string[] | null;
 
   numberOfListings: number | null;
+
+  primaryButtonText: string | null;
+
+  primaryButtonLink: string | null;
+
+  secondaryButtonText: string | null;
+
+  secondaryButtonLink: string | null;
 };
 
 
@@ -145,6 +153,7 @@ export type ExpertiseSectionData = {
   heading: string | null;
   buttonText: string | null;
   buttonLink: string | null;
+  gridColumns: "3" | "4" | null;
   defaultImage: {
     node: {
       id: string;
@@ -346,6 +355,23 @@ export type PropertyListingsSectionData = {
     | number
     | null;
 };
+export type ContentSectionData = {
+  __typename:
+    "PageSectionsPageSectionsContentSectionLayout";
+  
+  eyebrow: string | null;
+
+  heading: string | null;
+
+  content: string | null;
+
+  contentWidth:
+    | "narrow"
+    | "medium"
+    | "wide"
+    | null;
+};
+
 
 export type PageSection =
    | HeroSliderSection
@@ -360,6 +386,7 @@ export type PageSection =
   | ContactSectionData
   | FaqSectionData
   | PropertyListingsSectionData
+  | ContentSectionData
   | {
       __typename: string;
       [key: string]: unknown;
