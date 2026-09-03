@@ -118,10 +118,8 @@ export default function HeaderMenu({
               >
                 <div
                   className="
-                    bg-[#f3f0e9]
-                    px-6
-                    py-5
-                    text-[#173850]
+                    bg-[#ff1c0d]
+                    text-[#fff]
                     shadow-lg
                   "
                 >
@@ -136,13 +134,15 @@ export default function HeaderMenu({
                               undefined
                             }
                             className="
+                              px-4
+                              py-3
                               block
                               whitespace-nowrap
-                              text-[11px]
+                              text-[12px]
                               uppercase
-                              tracking-[0.12em]
-                              transition-opacity
-                              hover:opacity-50
+                              text-white
+                              font-bold
+                              hover:bg-[#ff958e]
                             "
                           >
                             {child.label}
